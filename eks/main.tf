@@ -1,12 +1,12 @@
 module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
-  
-  create = true
-  cluster_name = "${var.project_name}-main"
-  cluster_version = "1.27"
-  subnet_ids = data.terraform_remote_state.tf_remote_state_vpc2.outputs.private_subnet_ids
+  source = "terraform-aws-modules/eks/aws"
+
+  create                         = true
+  cluster_name                   = "${var.project_name}-main"
+  cluster_version                = "1.27"
+  subnet_ids                     = data.terraform_remote_state.tf_remote_state_vpc2.outputs.private_subnet_ids
   cluster_endpoint_public_access = true
-  vpc_id = data.terraform_remote_state.tf_remote_state_vpc2.outputs.vpc_id
+  vpc_id                         = data.terraform_remote_state.tf_remote_state_vpc2.outputs.vpc_id
 
   # EKS nodes configurations 
   eks_managed_node_group_defaults = {
@@ -31,7 +31,7 @@ data "aws_iam_policy" "ebs_csi_policy" {
 }
 
 module "irsa-ebs-csi" {
-  source  = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
+  source = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
 
   create_role                   = true
   role_name                     = "AmazonEKSTFEBSCSIRole-${module.eks.cluster_name}"

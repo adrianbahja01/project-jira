@@ -23,7 +23,7 @@ variable "helm_repo_url" {
 }
 
 variable "jira_namespace" {
-     description = "Namespace name used for Jira"
+  description = "Namespace name used for Jira"
 }
 
 variable "jira_hostname" {

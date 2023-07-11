@@ -1,7 +1,7 @@
 resource "kubernetes_namespace" "jira-ns" {
-    metadata {
-      name = "jira"
-    }
+  metadata {
+    name = "jira"
+  }
 }
 resource "helm_release" "jira-software" {
   depends_on = [kubernetes_namespace.jira-ns, helm_release.alb_ingress, helm_release.external-dns]
@@ -21,7 +21,7 @@ resource "helm_release" "jira-software" {
   }
 
   set {
-    name = "fullnameOverride"
+    name  = "fullnameOverride"
     value = var.helm_release_name
   }
 
@@ -29,11 +29,11 @@ resource "helm_release" "jira-software" {
   #   name  = "service.type"
   #   value = "LoadBalancer"
   # }
-  
+
 }
 
 resource "kubernetes_ingress_v1" "jira-ingress" {
-  depends_on = [ helm_release.jira-software ]
+  depends_on             = [helm_release.jira-software]
   wait_for_load_balancer = true
   metadata {
     name      = "jira-ingress"

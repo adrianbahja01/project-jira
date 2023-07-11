@@ -21,11 +21,11 @@ module "vpc" {
   }
   private_subnet_tags = {
     "kubernetes.io/cluster/${var.project_name}-main" = "shared"
-    "kubernetes.io/role/internal-elb"             = 1
+    "kubernetes.io/role/internal-elb"                = 1
   }
 
   public_subnet_tags = {
     "kubernetes.io/cluster/${var.project_name}-main" = "shared"
-    "kubernetes.io/role/elb"                      = 1
-}
+    "kubernetes.io/role/elb"                         = 1
+  }
 }
