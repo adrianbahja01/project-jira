@@ -23,7 +23,7 @@ variable "helm_repo_url" {
 }
 
 variable "jira_namespace" {
-     description = "Namespace name used for Jira s"
+     description = "Namespace name used for Jira"
 }
 
 variable "jira_hostname" {
@@ -32,4 +32,12 @@ variable "jira_hostname" {
 
 variable "domain_name" {
   description = "The DNS record name which will be used by LB"
+}
+
+variable "account_id" {
+  description = "The AWS account ID"
+}
+
+variable "ingressC_service_account_name" {
+  description = "The k8s alb-ingress service account name"
 }
